@@ -1,0 +1,54 @@
+# 依赖目录
+node_modules/
+.pnp
+.pnp.js
+
+# 缓存和日志文件
+.cache/
+.temp/
+.tmp/
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# 编辑器/IDE 相关
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.code-workspace
+
+# 操作系统生成文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 测试覆盖
+coverage/
+.nyc_output/
+
+# TypeScript 生成文件
+*.tsbuildinfo
+
+# ESLint/Prettier 缓存
+.eslintcache
+.prettiercache
+
+# 本地开发文件
+.history/*
+.env.staging
+.env.production
+
+# Vue CLI/Vite 生成文件
+/public/**/*.map
+/src/**/*.map
