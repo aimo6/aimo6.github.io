@@ -44,6 +44,8 @@ coverage/
 .eslintcache
 .prettiercache
 
+.deploy_git
+
 # 本地开发文件
 .history/*
 .env.staging
