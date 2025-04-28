@@ -22,7 +22,7 @@ pretty_urls:
 
 # Directory
 source_dir: source
-public_dir: docs
+public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
@@ -102,5 +102,5 @@ theme: hexo-theme-fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: git@github.com:aimo6/lsx.github.io.git
-  branch: main
+  repo: git@github.com:aimo6/aimo6.github.io.git
+  branch: public
