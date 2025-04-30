@@ -26,13 +26,16 @@
 <meta property="og:site_name" content="lsx的日志">
 <meta property="og:description" content="3270. 求出数字答案1.字符串判断先把这三个数转为填充后的字符串，然后对每一位进行判断。 123456789101112131415161718192021222324public int generateKey(int num1, int num2, int num3) &#123;        List&lt;Integer&gt; numList &#x3D; List.of(num1, num">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://aimo6.github.io/markdown-img/2025%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95.assets/image-20250430101333522.png">
+<meta property="og:image" content="https://aimo6.github.io/markdown-img/2025%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95.assets/image-20250430101547308.png">
 <meta property="article:published_time" content="2025-04-27T10:40:57.644Z">
-<meta property="article:modified_time" content="2025-04-28T13:46:08.138Z">
+<meta property="article:modified_time" content="2025-04-30T02:16:07.291Z">
 <meta property="article:author" content="lsx">
 <meta property="article:tag" content="力扣">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aimo6.github.io/markdown-img/2025%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95.assets/image-20250430101333522.png">
   
   
   
@@ -225,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          871 字
+          1.5k 字
         
       </span>
     
@@ -236,7 +239,7 @@
         
         
         
-          8 分钟
+          13 分钟
         
       </span>
     
@@ -298,6 +301,35 @@
 
 <h1 id="2302-统计得分小于-K-的子数组数目"><a href="#2302-统计得分小于-K-的子数组数目" class="headerlink" title="2302. 统计得分小于 K 的子数组数目"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-subarrays-with-score-less-than-k/">2302. 统计得分小于 K 的子数组数目</a></h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">long</span> <span class="hljs-title function_">countSubarrays</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">long</span> k)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;right &lt; nums.length;right++)&#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> nums[right];<br>        <span class="hljs-comment">// 将当前数加入窗口中</span><br>        sum += num;<br>        <span class="hljs-comment">// 内循环，如果当前窗口和*窗口长度 大于等于 k时，移动左窗口，直至窗口满足条件</span><br>        <span class="hljs-keyword">while</span> (sum * (right - left + <span class="hljs-number">1</span>) &gt;= k)&#123;<br>            sum -= nums[left];<br>            left++;<br>        &#125;<br>        <span class="hljs-comment">// 这里是随着当前数加入窗口后当增加的子数组个数，而不是当前窗口内能够组成的子数组个数</span><br>        <span class="hljs-comment">// 比如[2,1,4,3]当4加入窗口中时，增加的子数组为[2,1,4,3],[1,4,3],[4,3],[4]共计4个</span><br>        <span class="hljs-comment">// 因为之前的已经统计过了，不用再次计算</span><br>        ans += right - left + <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+
+
+<h1 id="2962-统计最大元素出现至少-K-次的子数组"><a href="#2962-统计最大元素出现至少-K-次的子数组" class="headerlink" title="2962. 统计最大元素出现至少 K 次的子数组"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-subarrays-where-max-element-appears-at-least-k-times/">2962. 统计最大元素出现至少 K 次的子数组</a></h1><p>这道题目和前面的那些滑动窗口题目类似，先是扩张窗口使得窗口内最大元素个数为k，然后在内循环中收缩窗口，直至窗口内最大元素个数为k-1（此时是窗口恰好不满足的情况）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">long</span> <span class="hljs-title function_">countSubarrays</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> k)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">max</span> <span class="hljs-operator">=</span> Arrays.stream(nums).max().getAsInt();<br>    <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">long</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">//当前窗口内最大元素的个数</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;right &lt; nums.length;right++)&#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> nums[right];<br>        <span class="hljs-keyword">if</span>(num == max)&#123;<br>            count++;<br>        &#125;<br>        <span class="hljs-comment">//内循环，使得窗口内最大元素个数小于k</span><br>        <span class="hljs-keyword">while</span> (count &gt;= k)&#123;<br>            <span class="hljs-keyword">if</span>(nums[left] == max)&#123;<br>                count--;<br>            &#125;<br>            left++;<br>        &#125;<br>        <span class="hljs-comment">//右指针固定时，left 的位置保证了所有左端点 &lt; left 对应的子数组 [left_start, right] 必             //然包含至少 k 个最大值。ans += left 正是累加这些合法的左端点数目</span><br>        ans += left;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="763-划分字母区间"><a href="#763-划分字母区间" class="headerlink" title="763. 划分字母区间"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/partition-labels/">763. 划分字母区间</a></h1><p>这道题目是贪心算法思想，在划分时如果包含一个字符，则该次划分必须包含所有字符。</p>
+<p>算法步骤：</p>
+<p>1：计算字符串s中每个字符最后一次出现的位置。</p>
+<p>2：对字符串进行遍历，在遍历中不断更新右窗口最大下标。</p>
+<p>3：当到达右窗口时，统计当前划分，重新赋值，开始下一轮划分。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">partitionLabels</span><span class="hljs-params">(String s)</span> &#123;<br>       <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> s.length();<br>       <span class="hljs-comment">//统计每个字符的最大下标</span><br>       <span class="hljs-type">int</span>[] maxIndex = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">26</span>];<br>       <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i &lt; n;i++)&#123;<br>           maxIndex[s.charAt(i) - <span class="hljs-string">&#x27;a&#x27;</span>] = i;<br>       &#125;<br>       ArrayList&lt;Integer&gt; ans = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>       <span class="hljs-comment">//记录当前统计的边界</span><br>       <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>,right = <span class="hljs-number">0</span>;<br>       <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;i &lt; n;i++)&#123;<br>           <span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> s.charAt(i);<br>           right = Math.max(right,maxIndex[c - <span class="hljs-string">&#x27;a&#x27;</span>]);<br>           <span class="hljs-comment">//到达当前一次划分边界，统计结果</span><br>           <span class="hljs-keyword">if</span>(i == right)&#123;<br>               ans.add(right - left + <span class="hljs-number">1</span>);<br>               left = i+<span class="hljs-number">1</span>;<br>           &#125;<br>       &#125;<br>       <span class="hljs-keyword">return</span> ans;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="1295-统计位数为偶数的数字"><a href="#1295-统计位数为偶数的数字" class="headerlink" title="1295. 统计位数为偶数的数字"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-numbers-with-even-number-of-digits/">1295. 统计位数为偶数的数字</a></h1><h2 id="1-直接统计位数"><a href="#1-直接统计位数" class="headerlink" title="1.直接统计位数"></a>1.直接统计位数</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findNumbers</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> num : nums)&#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">while</span> (num &gt; <span class="hljs-number">0</span>)&#123;<br>                count++;<br>                num /= <span class="hljs-number">10</span>;<br>            &#125;;<br>            <span class="hljs-keyword">if</span> (count % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>)&#123;<br>                ans++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="/markdown-img/2025%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95.assets/image-20250430101333522.png" srcset="/img/loading.gif" lazyload alt="image-20250430101333522"></p>
+<h2 id="2-使用对数函数"><a href="#2-使用对数函数" class="headerlink" title="2.使用对数函数"></a>2.使用对数函数</h2><p>以10为底的对数函数向下取整为int可以获取除了第一位之外的位数，对结果加一即可获取x的位数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findNumbers</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> num : nums)&#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> (<span class="hljs-type">int</span>) Math.log10(num) + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">if</span>(count % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>)&#123;<br>                ans++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="/markdown-img/2025%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95.assets/image-20250430101547308.png" srcset="/img/loading.gif" lazyload alt="image-20250430101547308"></p>
 
                 
               </div>
@@ -391,6 +423,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2025/04/29/SSH%E7%A7%98%E9%92%A5%E6%A0%A1%E9%AA%8C%E6%B5%81%E7%A8%8B/" title="SSH秘钥校验流程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SSH秘钥校验流程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
